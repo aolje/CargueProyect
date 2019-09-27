@@ -1,52 +1,50 @@
 <ion-header>
-  <ion-toolbar color="dark">
-    <ion-title>
-      Home
-    </ion-title>
-    <ion-button (click)="onClick()" slot="end" color="tertiary">
-      <ion-icon name="finger-print" slot="end"></ion-icon>
-      Login
-    </ion-button>
-  </ion-toolbar>
+    <ion-toolbar color="dark">
+        <ion-title>
+            Home
+        </ion-title>
+        <ion-button slot="end" color="tertiary">
+            <ion-icon name="finger-print" slot="end"></ion-icon>
+            Login
+        </ion-button>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content color="dark">
-  <div id="div-content">
-    <div id="div-content-right">
-      <h1>UP-SCRIPT</h1>
-      <p>Pruebas de interfaz para la carga de scripts.</p>      
-      <ion-button id="btn-dcr" type="submit" name="submit" color="dark" >
-        <ion-input type="file" id="btn-dcr2" [(ngModel)]="archivoS" (click)="otro(archivoS)"></ion-input>Subir archivo
-        <ion-icon slot="end" name="folder" color="warning"></ion-icon>
-      </ion-button>
-      <ion-label>{{archivo}}</ion-label>
-      <ion-button slot="end"  id="btn-dcr" color="dark" (click)="otro()">
-        Preparar archivo
-      </ion-button>
-     
-      <ion-textarea id="txtarea-dcr">
-        {{cosas}}
-      </ion-textarea>
-    </div>
+    <div id="div-content">
+        <div id="div-content-ppal">
+            <div id="div-part-top">
+                <h1>UP-SCRIPT</h1>
+                <p>Pruebas de interfaz para la carga de scripts.</p>
+                <ion-button id="btn-dcr" name="archivos" color="dark">
+                    <ion-input type="file" id="btn-dcr2" [(ngModel)]="taskName" (change)='onChangeFile($event.target.value)'></ion-input>Subir archivo
+                    <ion-icon slot="end" name="folder" color="warning"></ion-icon>
+                </ion-button>
 
-    <div id="div-content-left">
-      <div id="dcl-1">
-        <h1>Aqui progress</h1>
-      </div>
-      <div id="dcl-2">
-        <ion-button (click)="onClick()" id="btn-dcl">
-          <ion-icon name="cloud-upload" slot="end"></ion-icon>
-          Empezar cargue
-        </ion-button>
-      </div>
+                <ion-label id="lbl-file">
+                    <p id="p-lbl-file">Archivo subido:<br></p> {{archivo}}
+                </ion-label>
+            </div>
+            <div id="div-part-bottom">
+                <ion-button color="dark" type="submit" (click)="onSubmit()" id="btn-Submit">
+                    <ion-icon name="cloud-upload" slot="end" color="success"></ion-icon>
+                    Empezar cargue
+                </ion-button>
+            </div>
+
+            <ion-progress-bar [value]="porcentaje"></ion-progress-bar>
+            <!-- <ion-range (ionChange)="cambioRango($event)" min="1" max="100" pin=true color="tertiary"></ion-range> -->
+
+            <ion-list id="list-files">
+                <ion-item *ngFor="let todo of taskList" color="medium" id="item-list">
+                    {{todo}}
+                    <div class="item-note" slot="end">
+                        <ion-button color="danger">
+                            <ion-icon name="trash"></ion-icon>
+                        </ion-button>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </div>
     </div>
-    <form (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <input type="file" name="image"  />
-        </div>
-        <div class="form-group">
-            <button class="btn btn-primary">Submit</button>
-        </div>
-    </form>
-  </div>
 </ion-content>
