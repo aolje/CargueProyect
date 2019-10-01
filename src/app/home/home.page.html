@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
     <ion-toolbar color="dark">
         <ion-title>
             Home
@@ -8,9 +8,9 @@
             Login
         </ion-button>
     </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content color="dark">
+<ion-content>
     <div id="div-content">
         <div id="div-content-ppal">
             <div id="div-part-top">
@@ -20,31 +20,41 @@
                     <ion-input type="file" id="btn-dcr2" [(ngModel)]="taskName" (change)='onChangeFile($event.target.value)'></ion-input>Subir archivo
                     <ion-icon slot="end" name="folder" color="warning"></ion-icon>
                 </ion-button>
-
-                <ion-label id="lbl-file">
-                    <p id="p-lbl-file">Archivo subido:<br></p> {{archivo}}
-                </ion-label>
+                <!-- accept=".csv" -->
+                <p id="p-lbl-file">Archivo subido:<br></p>
+                <div id="div-lbl-file">
+                    <ion-label id="lbl-file">
+                        {{archivo}}
+                    </ion-label>
+                </div>
             </div>
-            <div id="div-part-bottom">
-                <ion-button color="dark" type="submit" (click)="onSubmit()" id="btn-Submit">
-                    <ion-icon name="cloud-upload" slot="end" color="success"></ion-icon>
-                    Empezar cargue
-                </ion-button>
+            <div id="div-part-bottom" [hidden]="oculto">
+                <div id="div-list">
+                    <h2>Lista de archivos a cargar:</h2>
+                    <ion-list id="list-files">
+                        <ion-item *ngFor="let todo of taskList" color="medium" id="item-list">
+                            {{todo}}
+                            <div class="item-note" slot="end">
+                                <ion-button color="danger" (click)="deleteItem(todo)">
+                                    <ion-icon name="trash"></ion-icon>
+                                </ion-button>
+                            </div>
+                        </ion-item>
+                    </ion-list>
+                </div>
+                <div id="div-boton">
+                    <ion-button color="dark" type="submit" (click)="onSubmit()" id="btn-Submit">
+                        Empezar cargue
+                        <ion-icon name="cloud-upload" slot="end" color="success"></ion-icon>
+                    </ion-button>
+                </div>
+                <!-- <ion-progress-bar [value]="porcentaje"></ion-progress-bar> -->
+                <!-- <ion-range (ionChange)="cambioRango($event)" min="1" max="100" pin=true color="tertiary"></ion-range> -->
+                <pre id="contenido-archivo"></pre>
+                <!-- Image preview -->
+                <div id="imagePreview"></div>
             </div>
-
-            <ion-progress-bar [value]="porcentaje"></ion-progress-bar>
-            <!-- <ion-range (ionChange)="cambioRango($event)" min="1" max="100" pin=true color="tertiary"></ion-range> -->
-
-            <ion-list id="list-files">
-                <ion-item *ngFor="let todo of taskList" color="medium" id="item-list">
-                    {{todo}}
-                    <div class="item-note" slot="end">
-                        <ion-button color="danger">
-                            <ion-icon name="trash"></ion-icon>
-                        </ion-button>
-                    </div>
-                </ion-item>
-            </ion-list>
+            <!-- <div data-width="460" data-height="345" data-type="jpg" data-crop="true" data-quality="60" data-folder="sample" data-something="stupid" style="background-color: aquamarine;"></div> -->
         </div>
     </div>
 </ion-content>
