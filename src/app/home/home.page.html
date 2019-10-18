@@ -17,7 +17,7 @@
                 <h1>UP-SCRIPT</h1>
                 <p>Pruebas de interfaz para la carga de scripts.</p>
                 <ion-button id="btn-dcr" name="archivos" color="dark">
-                    <ion-input type="file" id="btn-dcr2" [(ngModel)]="taskName" (change)='onChangeFile($event.target.value)'></ion-input>Subir archivo
+                    <ion-input type="file" id="btn-dcr2" [(ngModel)]="taskName" (change)="onFileSelected($event)" (change)='onChangeFile($event.target.value)'></ion-input>Subir archivo
                     <ion-icon slot="end" name="folder" color="warning"></ion-icon>
                 </ion-button>
                 <!-- accept=".csv" -->
@@ -43,7 +43,8 @@
                     </ion-list>
                 </div>
                 <div id="div-boton">
-                    <ion-button color="dark" type="submit" (click)="onSubmit()" id="btn-Submit">
+
+                    <ion-button color="dark" type="submit" (click)="onUpload()" id="btn-Submit">
                         Empezar cargue
                         <ion-icon name="cloud-upload" slot="end" color="success"></ion-icon>
                     </ion-button>
