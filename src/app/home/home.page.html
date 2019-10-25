@@ -11,51 +11,231 @@
 </ion-header> -->
 
 <ion-content>
-    <div id="div-content">
-        <div id="div-content-ppal">
-            <div id="div-part-top">
-                <h1>UP-SCRIPT</h1>
-                <p>Pruebas de interfaz para la carga de scripts.</p>
-                <ion-button id="btn-dcr" name="archivos" color="dark">
-                    <ion-input type="file" id="btn-dcr2" [(ngModel)]="taskName" (change)="onFileSelected($event)" (change)='onChangeFile($event.target.value)'></ion-input>Subir archivo
-                    <ion-icon slot="end" name="folder" color="warning"></ion-icon>
-                </ion-button>
-                <!-- accept=".csv" -->
-                <p id="p-lbl-file">Archivo subido:<br></p>
-                <div id="div-lbl-file">
-                    <ion-label id="lbl-file">
-                        {{archivo}}
-                    </ion-label>
-                </div>
-            </div>
-            <div id="div-part-bottom" [hidden]="oculto">
-                <div id="div-list">
-                    <h2>Lista de archivos a cargar:</h2>
-                    <ion-list id="list-files">
-                        <ion-item *ngFor="let todo of taskList" color="medium" id="item-list">
-                            {{todo}}
-                            <div class="item-note" slot="end">
-                                <ion-button color="danger" (click)="deleteItem(todo)">
-                                    <ion-icon name="trash"></ion-icon>
-                                </ion-button>
+    <h1>UP-SCRIPT</h1>
+    <p>Pruebas de interfaz para la carga de scripts.</p>
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="4">
+                <ion-card id="card-content">
+                    <div id="div-content-ppal">
+                        <div id="div-part-top">
+                            <ion-button id="btn-dcr" name="archivos" color="dark">
+                                <ion-input type="file" id="btn-dcr2" [(ngModel)]="taskName" (change)="onFileSelected($event)" (change)='onChangeFile($event.target.value)'>
+                                </ion-input>Subir archivo
+                                <ion-icon slot="end" name="folder" color="warning"></ion-icon>
+                            </ion-button>
+                            <!-- accept=".csv" -->
+                            <p id="p-lbl-file">Archivo subido:<br></p>
+                            <div id="div-lbl-file">
+                                <ion-label id="lbl-file">
+                                    {{archivo}}
+                                </ion-label>
                             </div>
-                        </ion-item>
-                    </ion-list>
-                </div>
-                <div id="div-boton">
-
-                    <ion-button color="dark" type="submit" (click)="onUpload()" id="btn-Submit">
-                        Empezar cargue
-                        <ion-icon name="cloud-upload" slot="end" color="success"></ion-icon>
-                    </ion-button>
-                </div>
-                <!-- <ion-progress-bar [value]="porcentaje"></ion-progress-bar> -->
-                <!-- <ion-range (ionChange)="cambioRango($event)" min="1" max="100" pin=true color="tertiary"></ion-range> -->
-                <pre id="contenido-archivo"></pre>
-                <!-- Image preview -->
-                <div id="imagePreview"></div>
-            </div>
-            <!-- <div data-width="460" data-height="345" data-type="jpg" data-crop="true" data-quality="60" data-folder="sample" data-something="stupid" style="background-color: aquamarine;"></div> -->
-        </div>
-    </div>
+                        </div>
+                        <div id="div-part-bottom" [hidden]="oculto">
+                            <div id="div-list">
+                                <ion-list id="list-files">
+                                    <ion-item *ngFor="let todo of taskList" color="medium" id="item-list">
+                                        {{todo}}
+                                        <div class="item-note" slot="end">
+                                            <ion-button style="margin-right: 10px;" color="secondary" (click)="verArchivo(todo)">
+                                                <ion-icon name="paper" color="dark"></ion-icon>
+                                            </ion-button>
+                                            <ion-button color="danger" (click)="deleteItem(todo)">
+                                                <ion-icon name="trash" color="dark"></ion-icon>
+                                            </ion-button>
+                                        </div>
+                                    </ion-item>
+                                </ion-list>
+                            </div>
+                        </div>
+                    </div>
+                </ion-card>
+            </ion-col>
+            <ion-col size="4">
+                <ion-card id="card-content">
+                    <div id="div-content-ppal">
+                        <div id="div-part-top">
+                            <ion-button id="btn-dcr" name="archivos" color="dark">
+                                <ion-input type="file" id="btn-dcr2" [(ngModel)]="taskName" (change)="onFileSelected($event)" (change)='onChangeFile($event.target.value)'>
+                                </ion-input>Subir archivo
+                                <ion-icon slot="end" name="folder" color="warning"></ion-icon>
+                            </ion-button>
+                            <!-- accept=".csv" -->
+                            <p id="p-lbl-file">Archivo subido:<br></p>
+                            <div id="div-lbl-file">
+                                <ion-label id="lbl-file">
+                                    {{archivo}}
+                                </ion-label>
+                            </div>
+                        </div>
+                        <div id="div-part-bottom" [hidden]="oculto">
+                            <div id="div-list">
+                                <ion-list id="list-files">
+                                    <ion-item *ngFor="let todo of taskList" color="medium" id="item-list">
+                                        {{todo}}
+                                        <div class="item-note" slot="end">
+                                            <ion-button style="margin-right: 10px;" color="secondary" (click)="verArchivo(todo)">
+                                                <ion-icon name="paper" color="dark"></ion-icon>
+                                            </ion-button>
+                                            <ion-button color="danger" (click)="deleteItem(todo)">
+                                                <ion-icon name="trash" color="dark"></ion-icon>
+                                            </ion-button>
+                                        </div>
+                                    </ion-item>
+                                </ion-list>
+                            </div>
+                        </div>
+                    </div>
+                </ion-card>
+            </ion-col>
+            <ion-col size="4">
+                <ion-card id="card-content">
+                    <div id="div-content-ppal">
+                        <div id="div-part-top">
+                            <ion-button id="btn-dcr" name="archivos" color="dark">
+                                <ion-input type="file" id="btn-dcr2" [(ngModel)]="taskName" (change)="onFileSelected($event)" (change)='onChangeFile($event.target.value)'>
+                                </ion-input>Subir archivo
+                                <ion-icon slot="end" name="folder" color="warning"></ion-icon>
+                            </ion-button>
+                            <!-- accept=".csv" -->
+                            <p id="p-lbl-file">Archivo subido:<br></p>
+                            <div id="div-lbl-file">
+                                <ion-label id="lbl-file">
+                                    {{archivo}}
+                                </ion-label>
+                            </div>
+                        </div>
+                        <div id="div-part-bottom" [hidden]="oculto">
+                            <div id="div-list">
+                                <ion-list id="list-files">
+                                    <ion-item *ngFor="let todo of taskList" color="medium" id="item-list">
+                                        {{todo}}
+                                        <div class="item-note" slot="end">
+                                            <ion-button style="margin-right: 10px;" color="secondary" (click)="verArchivo(todo)">
+                                                <ion-icon name="paper" color="dark"></ion-icon>
+                                            </ion-button>
+                                            <ion-button color="danger" (click)="deleteItem(todo)">
+                                                <ion-icon name="trash" color="dark"></ion-icon>
+                                            </ion-button>
+                                        </div>
+                                    </ion-item>
+                                </ion-list>
+                            </div>
+                        </div>
+                    </div>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="4">
+                <ion-card id="card-content">
+                    <div id="div-content-ppal">
+                        <div id="div-part-top">
+                            <ion-button id="btn-dcr" name="archivos" color="dark">
+                                <ion-input type="file" id="btn-dcr2" [(ngModel)]="taskName" (change)="onFileSelected($event)" (change)='onChangeFile($event.target.value)'></ion-input>Subir archivo
+                                <ion-icon slot="end" name="folder" color="warning"></ion-icon>
+                            </ion-button>
+                            <!-- accept=".csv" -->
+                            <p id="p-lbl-file">Archivo subido:<br></p>
+                            <div id="div-lbl-file">
+                                <ion-label id="lbl-file">
+                                    {{archivo}}
+                                </ion-label>
+                            </div>
+                        </div>
+                        <div id="div-part-bottom" [hidden]="oculto">
+                            <div id="div-list">
+                                <ion-list id="list-files">
+                                    <ion-item *ngFor="let todo of taskList" color="medium" id="item-list">
+                                        {{todo}}
+                                        <div class="item-note" slot="end">
+                                            <ion-button style="margin-right: 10px;" color="secondary" (click)="verArchivo(todo)">
+                                                <ion-icon name="paper" color="dark"></ion-icon>
+                                            </ion-button>
+                                            <ion-button color="danger" (click)="deleteItem(todo)">
+                                                <ion-icon name="trash" color="dark"></ion-icon>
+                                            </ion-button>
+                                        </div>
+                                    </ion-item>
+                                </ion-list>
+                            </div>
+                        </div>
+                    </div>
+                </ion-card>
+            </ion-col>
+            <ion-col size="4">
+                <ion-card id="card-content">
+                    <div id="div-content-ppal">
+                        <div id="div-part-top">
+                            <ion-button id="btn-dcr" name="archivos" color="dark">
+                                <ion-input type="file" id="btn-dcr2" [(ngModel)]="taskName" (change)="onFileSelected($event)" (change)='onChangeFile($event.target.value)'></ion-input>Subir archivo
+                                <ion-icon slot="end" name="folder" color="warning"></ion-icon>
+                            </ion-button>
+                            <!-- accept=".csv" -->
+                            <p id="p-lbl-file">Archivo subido:<br></p>
+                            <div id="div-lbl-file">
+                                <ion-label id="lbl-file">
+                                    {{archivo}}
+                                </ion-label>
+                            </div>
+                        </div>
+                        <div id="div-part-bottom" [hidden]="oculto">
+                            <div id="div-list">
+                                <ion-list id="list-files">
+                                    <ion-item *ngFor="let todo of taskList" color="medium" id="item-list">
+                                        {{todo}}
+                                        <div class="item-note" slot="end">
+                                            <ion-button style="margin-right: 10px;" color="secondary" (click)="verArchivo(todo)">
+                                                <ion-icon name="paper" color="dark"></ion-icon>
+                                            </ion-button>
+                                            <ion-button color="danger" (click)="deleteItem(todo)">
+                                                <ion-icon name="trash" color="dark"></ion-icon>
+                                            </ion-button>
+                                        </div>
+                                    </ion-item>
+                                </ion-list>
+                            </div>
+                        </div>
+                    </div>
+                </ion-card>
+            </ion-col>
+            <ion-col size="4">
+                <ion-card id="card-content">
+                    <div id="div-content-ppal">
+                        <div id="div-part-top">
+                            <ion-button id="btn-dcr" name="archivos" color="dark">
+                                <ion-input type="file" id="btn-dcr2" [(ngModel)]="taskName" (change)="onFileSelected($event)" (change)='onChangeFile($event.target.value)'></ion-input>Subir archivo
+                                <ion-icon slot="end" name="folder" color="warning"></ion-icon>
+                            </ion-button>
+                            <!-- accept=".csv" -->
+                            <p id="p-lbl-file">Archivo subido:<br></p>
+                            <div id="div-lbl-file">
+                                <ion-label id="lbl-file">
+                                    {{archivo}}
+                                </ion-label>
+                            </div>
+                        </div>
+                        <div id="div-part-bottom" [hidden]="oculto">
+                            <div id="div-list">
+                                <ion-list id="list-files">
+                                    <ion-item *ngFor="let todo of taskList" color="medium" id="item-list">
+                                        {{todo}}
+                                        <div class="item-note" slot="end">
+                                            <ion-button style="margin-right: 10px;" color="secondary" (click)="verArchivo(todo)">
+                                                <ion-icon name="paper" color="dark"></ion-icon>
+                                            </ion-button>
+                                            <ion-button color="danger" (click)="deleteItem(todo)">
+                                                <ion-icon name="trash" color="dark"></ion-icon>
+                                            </ion-button>
+                                        </div>
+                                    </ion-item>
+                                </ion-list>
+                            </div>
+                        </div>
+                    </div>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

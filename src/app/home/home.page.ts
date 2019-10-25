@@ -13,10 +13,13 @@ import { start } from 'repl';
 export class HomePage {
   cont: any = "aqui";
   archivo: any = "Ninguno";
+  contenidoArchivos;
   taskList = [];
   taskName: string;
   itemL: string;
   oculto = true;
+  contenidoArchivo = true;
+  
   porcentaje = 0.05;
 
   urlLocal = "http://localhost:8080/ConfigMasivo/ServicioConfig";
@@ -55,7 +58,7 @@ export class HomePage {
       this.archivo = filenameWithExtension;
       this.oculto = false;
       localStorage.setItem(filenameWithExtension, data);
-      this.leerArchivo(data);
+      // this.leerArchivo(data);
       console.log(data);
     }
 
@@ -94,7 +97,10 @@ export class HomePage {
       // reader.readAsText(textObtenido);
     }
   }
-  leerArchivo(file) {
+
+  verArchivo(file) {
+    this.contenidoArchivo = !this.contenidoArchivo;
+    this.contenidoArchivos = file;
     const input = document.querySelector('input[type="file"]')
     input.addEventListener('change', function (e) {
       const reader = new FileReader();

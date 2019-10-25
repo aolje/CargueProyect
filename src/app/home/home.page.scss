@@ -6,16 +6,20 @@ ion-content {
     }
     h1 {
         // background-color: aqua;
-        height: 40%;
+        height: 10%;
         font-size: 50px;
         font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+        margin: auto;
+        text-align: center;
     }
     p {
         // background-color: azure;
-        height: 20%;
+        height: 10%;
         font-size: 15px;
+        margin: auto;
+        text-align: center;
     }
-    #div-content {
+    #card-content {
         // background-color: darkcyan;
         // background: transparent;
         padding: 5%;
@@ -46,12 +50,12 @@ ion-content {
         width: 60%;
         height: 100%;
         display: inline-block;
-        overflow-y: auto;
-        scroll-behavior: auto;
+        // overflow-y: auto;
+        // scroll-behavior: auto;
     }
     #list-files {
         border-radius: 10px;
-        width: 99%;
+        width: 100%;
     }
     #div-part-bottom h2 {
         font-size: 15px;
@@ -67,7 +71,7 @@ ion-content {
         // background-color: aquamarine;
         border-radius: 30px;
         width: 100%;
-        height: 100%;
+        height: 80%;
         font-size: 1em;
         padding: 10%;
         text-align: center;
@@ -92,8 +96,8 @@ ion-content {
         font-size: 15px;
         color: rgb(167, 167, 167);
         margin: auto;
-        width: 30%;
-        height: 5%;
+        width: 100%;
+        height: 10%;
         text-align: left;
     }
     //Botón del buscador de archivos.
@@ -111,8 +115,12 @@ ion-content {
     #btn-dcr {
         // background-color: cornflowerblue;
         margin: auto;
-        width: 30%;
-        height: 10%;
+        width: 100%;
+        height: 30%;
         font-size: 1em;
+    }
+    ion-grid {
+        margin: auto;
+        height: 100%;
     }
 }
